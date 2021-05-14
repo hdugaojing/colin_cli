@@ -3,6 +3,7 @@
 const commander = require('commander')
 const inquirer = require( 'inquirer' )
 const consoler = require( '../utils/consoler' )
+const create = require('../src/create')
 
 const { green, yellow, blue } = consoler
 
@@ -42,7 +43,10 @@ commander
         green('👽 👽 👽 '+'欢迎使用Textin_cli,轻松构建React+TS项目～🎉🎉🎉')
         /* 和开发者交互，获取开发项目信息 */
         inquirer.prompt(question).then(answer=>{
-            console.log('answer=', answer )
+            if(answer.conf){
+                /* 创建文件 */
+                create(answer)
+             }
         })
     })
 
